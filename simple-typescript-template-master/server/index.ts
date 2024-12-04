@@ -67,7 +67,7 @@ class Backend {
 
   private startServer(): void {
     if (this._env === 'production') {
-      http.createServer(this.app).listen(3000, () => {
+      http.createServer(this.app).listen(process.env.PORT || 8080, () => {
         console.log('Server is listening!')
       })
     }

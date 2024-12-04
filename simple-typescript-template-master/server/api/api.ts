@@ -9,7 +9,7 @@ export class API {
   // Properties
   app: Express
   db: Database
-  jwtSecretKey:string = "SehrGeheimerSchlüssel"
+  jwtSecretKey:string = process.env.jwt_secretKey
   loggedInUsers: User[] = []
 
   constructor(app: Express, db:Database) {
