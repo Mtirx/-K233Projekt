@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
  
       if (response.status === 200) {
         localStorage.setItem('token', data)
-        alert('Login Successful')
  
         window.location.href = '/'
       } else {
