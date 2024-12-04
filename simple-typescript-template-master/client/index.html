@@ -31,51 +31,22 @@
         <section class="md:col-span-2 space-y-6">
             <div class="bg-gray-800 rounded-lg shadow p-4">
                 <h2 class="text-xl font-semibold mb-4">Create a Post</h2>
-                <form class="space-y-4">
                     <textarea
+                        id="postInput"
                         class="w-full p-3 rounded-lg bg-gray-700 text-gray-300 shadow focus:ring-2 focus:ring-blue-500 transition"
                         rows="3"
                         placeholder="What's on your mind?"
                     ></textarea>
                     <button
+                        id="postButton"
                         type="submit"
                         class="w-full p-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg text-white shadow hover:scale-105 transition transform duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     >
                         Post
                     </button>
-                </form>
             </div>
 
-            <div class="space-y-6">
-                <div class="bg-gray-800 rounded-lg shadow p-4">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="font-bold">User123</p>
-                            <p class="text-sm text-gray-500">2 hours ago</p>
-                        </div>
-                        <button class="text-gray-500 hover:text-red-500 transition">
-                            ❤️ Like
-                        </button>
-                    </div>
-                    <p class="mt-4">
-                        This is an example post. Instaschwam is awesome!
-                    </p>
-                </div>
-
-                <div class="bg-gray-800 rounded-lg shadow p-4">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="font-bold">CoolUser42</p>
-                            <p class="text-sm text-gray-500">1 day ago</p>
-                        </div>
-                        <button class="text-gray-500 hover:text-red-500 transition">
-                            ❤️ Like
-                        </button>
-                    </div>
-                    <p class="mt-4">
-                        Having a great time here! Follow me for more updates.
-                    </p>
-                </div>
+            <div id="postList" class="space-y-6">
             </div>
         </section>
     </main>

@@ -12,4 +12,11 @@ export class User {
         this.password = password;
         this.role = role;
     }
+    public get getUsername():string{
+        return this.username
+    }
+    
+    public get getUserId():number{
+        return this.userId
+    }
 }
