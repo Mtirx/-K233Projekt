@@ -17,6 +17,7 @@ export class API {
     this.db = db
     this.app.post ('/api/register', body("username").notEmpty().withMessage("Username is empty").custom(async (username) => {if(!await this.usernameExists(username)) throw new Error("Username already exist")}).escape(), body("password").isLength({min: 8}).withMessage("Password must be least 8 characters"), this.register) 
     this.app.post('/api/login', body("username").isString().withMessage("Username must be a string").escape(), body("password").isString().withMessage("Password must be a string"), this.login)
+    this.app.post('/api/posts', this.verifyToken, body("content").isString().withMessage("Username must be a string").escape(), this.createPost)
   }
 
   private register = async(req: Request, res: Response): Promise<any> => {
@@ -64,6 +65,41 @@ export class API {
     }
     return res.status(401).send("Username or password wrong")
   }
+
+  private createPost = async(req: Request, res: Response): Promise<any> => {
+    const validationRes  = validationResult(req);
+    if(!validationRes.isEmpty()) {
+      return res.status(400).send(validationRes.array()[0].msg)
+    }
+
+    const {content} = matchedData(req)
+    const {userId} = req.body
+    const query = `INSERT INTO posts (content, user_id) VALUES ("${content}", ${userId});`
+    await this.db.executeSQL(query)
+
+
+      return res.sendStatus(200)
+  }
+
+  private verifyToken = (req, res, next) => {
+    const authHeader = req.headers["authorization"];
+    if (!authHeader)
+        return res.status(403).send("Failed to authenticate token");
+    const token = authHeader.split(" ")[1];
+
+    if (!token) {
+        return res.status(401).json({ message: "No token provided" });
+    }
+
+    jwt.verify(token, this.jwtSecretKey, (err, decoded) => {
+        if (err) {
+            return res.status(403).send("Failed to authenticate token");
+        }
+        const { id, username } = decoded.data;
+        req.body = { ...req.body, userId: id, username: username };
+        next();
+    });
+};
 
   private usernameExists = async(username:string): Promise<boolean> => {
     const query  = `SELECT username FROM users WHERE username = "${username}";`
