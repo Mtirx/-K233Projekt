@@ -9,12 +9,16 @@
     "dev:server": "vite",
     "dev:client": "livereload client/ -p 35729 -e html,js,css",
     "build": "vite build",
-    "start": "NODE_ENV=production node dist/index.js",
+    "start": "powershell -Command \"$env:NODE_ENV='production'; node dist/index.cjs\"",
     "lint": "eslint --ext .ts server/",
     "prettify": "prettier --write server/**/*.ts"
   },
   "dependencies": {
+    "@types/jsonwebtoken": "^9.0.7",
+    "bcrypt": "^5.1.1",
     "express": "4.21.1",
+    "express-validator": "^7.2.0",
+    "jsonwebtoken": "^9.0.2",
     "mariadb": "^3.4.0",
     "vite-plugin-live-reload": "^3.0.3"
   },

@@ -1,6 +1,6 @@
 import mariadb from 'mariadb'
 import { Pool } from 'mariadb'
-import { USER_TABLE, TWEET_TABLE } from './schema'
+import { USER_TABLE, POST_TABLE, COMMENT_TABLE } from './schema'
 
 export class Database {
   // Properties
@@ -20,7 +20,8 @@ export class Database {
   private initializeDBSchema = async () => {
     console.log('Initializing DB schema...')
     await this.executeSQL(USER_TABLE)
-    await this.executeSQL(TWEET_TABLE)
+    await this.executeSQL(POST_TABLE)
+    await this.executeSQL(COMMENT_TABLE)
   }
 
   public executeSQL = async (query: string) => {

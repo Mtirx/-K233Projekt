@@ -27,8 +27,10 @@ class Backend {
   // Constructor
   constructor() {
     this._app = express()
+    this._app.use(express.json())
+
     this._database = new Database()
-    this._api = new API(this._app)
+    this._api = new API(this._app, this._database)
     this._env = process.env.NODE_ENV || 'development'
 
     this.setupStaticFiles()
@@ -45,6 +47,21 @@ class Backend {
     this._app.get('/', (req: Request, res: Response) => {
       const __dirname = resolve(dirname(''))
       res.sendFile(__dirname + '/client/index.html')
+    })
+
+    this._app.get('/register', (req: Request, res: Response) => {
+      const __dirname = resolve(dirname(''))
+      res.sendFile(__dirname + '/client/registration.html')
+    })
+
+    this._app.get('/login', (req: Request, res: Response) => {
+      const __dirname = resolve(dirname(''))
+      res.sendFile(__dirname + '/client/login.html')
+    })
+
+    this._app.get('/profile', (req: Request, res: Response) => {
+      const __dirname = resolve(dirname(''))
+      res.sendFile(__dirname + '/client/profile.html')
     })
   }
 

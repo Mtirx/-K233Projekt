@@ -1,14 +1,91 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/style.css" />
-    <script src="client.js"></script>
-    <title>Typescript Starter</title>
-  </head>
-  <body>
-    <h1>Simple Typescript Starter</h1>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instaschwam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-gray-300 min-h-screen flex flex-col">
+    <header class="bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-bold cursor-default">Instaschwam</h1>
+            <nav class="flex space-x-4">
+                <a href="/profile" class="hover:underline">Profile</a>
+                <a href="#" class="hover:underline">Log Out</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto py-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <aside class="hidden md:block md:col-span-1 bg-gray-800 rounded-lg shadow p-4">
+            <h2 class="text-xl font-semibold mb-4">Your Profile</h2>
+            <div class="space-y-2">
+                <p class="text-lg">👤 Username: <span class="font-bold">User123</span></p>
+                <p>💬 Posts: 42</p>
+                <p>⭐ Followers: 123</p>
+                <p>🌟 Following: 98</p>
+            </div>
+        </aside>
+
+        <section class="md:col-span-2 space-y-6">
+            <div class="bg-gray-800 rounded-lg shadow p-4">
+                <h2 class="text-xl font-semibold mb-4">Create a Post</h2>
+                <form class="space-y-4">
+                    <textarea
+                        class="w-full p-3 rounded-lg bg-gray-700 text-gray-300 shadow focus:ring-2 focus:ring-blue-500 transition"
+                        rows="3"
+                        placeholder="What's on your mind?"
+                    ></textarea>
+                    <button
+                        type="submit"
+                        class="w-full p-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg text-white shadow hover:scale-105 transition transform duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                        Post
+                    </button>
+                </form>
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-gray-800 rounded-lg shadow p-4">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="font-bold">User123</p>
+                            <p class="text-sm text-gray-500">2 hours ago</p>
+                        </div>
+                        <button class="text-gray-500 hover:text-red-500 transition">
+                            ❤️ Like
+                        </button>
+                    </div>
+                    <p class="mt-4">
+                        This is an example post. Instaschwam is awesome!
+                    </p>
+                </div>
+
+                <div class="bg-gray-800 rounded-lg shadow p-4">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="font-bold">CoolUser42</p>
+                            <p class="text-sm text-gray-500">1 day ago</p>
+                        </div>
+                        <button class="text-gray-500 hover:text-red-500 transition">
+                            ❤️ Like
+                        </button>
+                    </div>
+                    <p class="mt-4">
+                        Having a great time here! Follow me for more updates.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 py-4">
+        <div class="container mx-auto text-center text-sm">
+            <p>© 2024 Instaschwam. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
 </html>
